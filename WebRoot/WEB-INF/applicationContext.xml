@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/graduation_293_cosmetic?useUnicode=true&amp;characterEncoding=utf-8">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/model/TAdmin.hbm.xml</value>
+			    <value>com/model/TUser.hbm.xml</value>
+			    <value>com/model/TCatelog.hbm.xml</value>
+			    <value>com/model/TGoods.hbm.xml</value>
+			    <value>com/model/TOrderItem.hbm.xml</value>
+			    <value>com/model/TOrder.hbm.xml</value>
+			    <value>com/model/TLiuyan.hbm.xml</value>
+			    <value>com/model/TGonggao.hbm.xml</value>
+			    <value>com/model/TComment.hbm.xml</value>
+			   
+			 </list>
+		</property>
+	</bean>
+	
+	
+	<bean id="indexAction" class="com.action.indexAction" scope="prototype">
+	    <property name="goodsDAO">
+			<ref bean="TGoodsDAO" />
+		</property>
+		<property name="orderItemDAO">
+			<ref bean="TOrderItemDAO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="TUserDAO" class="com.dao.TUserDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"></ref>
+		</property>
+	</bean>
+	
+	<bean id="userAction" class="com.action.UserAction" scope="prototype">
+		<property name="userDAO">
+			<ref bean="TUserDAO" />
+		</property>
+		<property name="goodsDAO">
+			<ref bean="TGoodsDAO" />
+		</property>
+	
+	</bean>
+	
+	
+	<!-- 后台的登录 -->
+	<bean id="loginService" class="com.service.loginService">
+		<property name="adminDAO">
+			<ref bean="TAdminDAO" />
+		</property>
+	</bean>
+	
+	<bean id="cartService" class="com.service.cartService">
+	    <property name="goodsDAO">
+			<ref bean="TGoodsDAO" />
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="TAdminDAO" class="com.dao.TAdminDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="adminAction" class="com.action.adminAction" scope="prototype">
+		<property name="adminDAO">
+			<ref bean="TAdminDAO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="TCatelogDAO" class="com.dao.TCatelogDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="catelogService" class="com.service.catelogService">
+		<property name="catelogDAO">
+			<ref bean="TCatelogDAO" />
+		</property>
+	</bean>
+	<bean id="catelogAction" class="com.action.catelogAction" scope="prototype">
+		<property name="catelogDAO">
+			<ref bean="TCatelogDAO" />
+		</property>
+		<property name="goodsDAO">
+			<ref bean="TGoodsDAO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="TGoodsDAO" class="com.dao.TGoodsDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="goodsAction" class="com.action.goodsAction" scope="prototype">
+		<property name="goodsDAO">
+			<ref bean="TGoodsDAO" />
+		</property>
+		<property name="commentDAO">
+			<ref bean="TCommentDAO" />
+		</property>
+		<property name="orderItemDAO">
+			<ref bean="TOrderItemDAO" />
+		</property>
+	</bean>
+	
+	
+	<bean id="TCommentDAO" class="com.dao.TCommentDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="commentAction" class="com.action.commentAction" scope="prototype">
+		<property name="commentDAO">
+			<ref bean="TCommentDAO" />
+		</property>
+		<property name="goodsDAO">
+			<ref bean="TGoodsDAO" />
+		</property>
+	</bean>
+	
+	
+
+	
+	
+	<bean id="TLiuyanDAO" class="com.dao.TLiuyanDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="liuyanAction" class="com.action.liuyanAction" scope="prototype">
+		<property name="liuyanDAO">
+			<ref bean="TLiuyanDAO" />
+		</property>
+	</bean>
+	
+
+	<bean id="TGonggaoDAO" class="com.dao.TGonggaoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"></ref>
+		</property>
+	</bean>
+	<bean id="gonggaoAction" class="com.action.gonggaoAction" scope="prototype">
+		<property name="gonggaoDAO">
+			<ref bean="TGonggaoDAO" />
+		</property>
+	</bean>
+
+	<bean id="TOrderItemDAO" class="com.dao.TOrderItemDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TOrderDAO" class="com.dao.TOrderDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+
+	
+	<bean id="buyAction" class="com.action.buyAction" scope="prototype">
+		<property name="goodsDAO">
+			<ref bean="TGoodsDAO" />
+		</property>
+		<property name="orderDAO">
+			<ref bean="TOrderDAO" />
+		</property>
+		<property name="orderItemDAO">
+			<ref bean="TOrderItemDAO" />
+		</property>
+		
+	</bean>
+	
+	
+	<bean id="xiaoshouAction" class="com.action.xiaoshouAction" scope="prototype">
+		<property name="goodsDAO">
+			<ref bean="TGoodsDAO" />
+		</property>
+		<property name="orderDAO">
+			<ref bean="TOrderDAO" />
+		</property>
+		<property name="orderItemDAO">
+			<ref bean="TOrderItemDAO" />
+		</property>
+	</bean>
+	</beans>

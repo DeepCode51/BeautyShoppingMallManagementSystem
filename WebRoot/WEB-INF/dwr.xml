@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd">
+<dwr>
+     <allow>
+          <create creator="spring" javascript="loginService">
+              <param name="beanName" value="loginService"></param>
+          </create>
+          
+          <create creator="spring" javascript="catelogService">
+              <param name="beanName" value="catelogService"></param>
+          </create>
+          <convert converter="bean" match="com.model.TCatelog">
+              <param name="include" value="catelogId,catelogName"></param>
+          </convert>
+          
+          
+          <create creator="spring" javascript="cartService">
+              <param name="beanName" value="cartService"></param>
+          </create>
+     </allow>
+</dwr>

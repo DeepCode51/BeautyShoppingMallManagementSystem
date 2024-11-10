@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC   
+     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"   
+     "http://struts.apache.org/dtds/struts-2.0.dtd">
+     
+     
+<struts>
+    <package name="liu" extends="struts-default">
+        <global-results>
+            <result name="succeed">/common/succeed.jsp</result>
+            <result name="msg">/common/msg.jsp</result>
+            <result name="msg1">/common/msg1.jsp</result>
+        </global-results>
+        
+        <action name="upload" class="com.util.upload" method="upload">
+             <result name="success">/upload/upload_re.jsp</result>
+        </action>
+        
+        <action name="index" class="indexAction" method="index">
+            <result name="success">/qiantai/index.jsp</result>
+        </action>
+        
+        <action name="toupdate_*" class="{1}Action" method="toUpdate">
+        	<result name="success">/admin/{1}/{1}Update.jsp</result>
+        </action>
+        
+        <action name="update_*" class="{1}Action" method="update">
+        	
+        </action>
+        
+        <action name="userReg" class="userAction" method="userReg">
+        </action>
+        <action name="userLogin" class="userAction" method="userLogin">
+        </action>
+        <action name="userLogout" class="userAction" method="userLogout">
+        </action>
+        <action name="userEdit" class="userAction" method="userEdit">
+        </action>
+        <action name="userMana" class="userAction" method="userMana">
+             <result name="success">/admin/user/userMana.jsp</result>
+        </action>
+        <action name="userDel" class="userAction" method="userDel">
+        </action>
+
+        <action name="catelogAdd" class="catelogAction" method="catelogAdd">
+        </action>
+        <action name="catelogMana" class="catelogAction" method="catelogMana">
+             <result name="success">/admin/catelog/catelogMana.jsp</result>
+        </action>
+        <action name="catelogDel" class="catelogAction" method="catelogDel">
+        </action>
+        <action name="catelogAll" class="catelogAction" method="catelogAll">
+             <result name="success">/qiantai/catelog/catelogAll.jsp</result>
+        </action>
+
+        <action name="goodsAdd" class="goodsAction" method="goodsAdd">
+        </action>
+        <action name="goodsMine" class="goodsAction" method="goodsMine">
+            <result name="success">/adianpu/goods/goodsMine.jsp</result>
+        </action>
+        <action name="goodsDel" class="goodsAction" method="goodsDel">
+        </action>
+        <action name="goodsMana" class="goodsAction" method="goodsMana">
+            <result name="success">/admin/goods/goodsMana.jsp</result>
+        </action>
+        <action name="goodsDetailHou" class="goodsAction" method="goodsDetailHou">
+            <result name="success">/admin/goods/goodsDetailHou.jsp</result>
+        </action>
+        
+        <action name="goodsAllNoTejia" class="goodsAction" method="goodsAllNoTejia">
+            <result name="success">/qiantai/goods/goodsAllNoTejia.jsp</result>
+        </action>
+        <action name="goodsDetailQian" class="goodsAction" method="goodsDetailQian">
+            <result name="success">/qiantai/goods/goodsDetailQian.jsp</result>
+        </action>
+        <action name="goodsByCatelog" class="goodsAction" method="goodsByCatelog">
+            <result name="success">/qiantai/goods/goodsByCatelog.jsp</result>
+        </action>
+        
+        <action name="testCart" class="buyAction" method="testCart">
+        </action>
+        <action name="addToCart" class="buyAction" method="addToCart">
+        </action>
+        <action name="myCart" class="buyAction" method="myCart">
+            <result name="success">/qiantai/myCart/myCart.jsp</result>
+        </action>
+        <action name="orderQueren" class="buyAction" method="orderQueren">
+            <result name="success">/qiantai/order/orderQueren.jsp</result>
+        </action>
+        <action name="orderSubmit" class="buyAction" method="orderSubmit">
+            <result name="success">/qiantai/order/orderSubmit.jsp</result>
+        </action>
+        <action name="myOrder" class="buyAction" method="myOrder">
+            <result name="success">/qiantai/order/myOrder.jsp</result>
+        </action>
+        <action name="orderDel" class="buyAction" method="orderDel">
+        </action>
+        <action name="orderDetail" class="buyAction" method="orderDetail">
+            <result name="success">/qiantai/order/orderDetail.jsp</result>
+        </action>  
+        
+        <action name="orderFk" class="buyAction" method="orderFk">
+       
+        </action>
+        
+        <action name="orderHdFk" class="buyAction" method="orderHdFk">
+        
+        </action> 
+        
+              <action name="bank" class="buyAction" method="bank">
+            <result name="success">/qiantai/order/bank.jsp</result>
+        </action> 
+ 
+     
+               <action name="orderShouli" class="buyAction" method="orderShouli">
+       		
+        </action>
+        
+        <action name="liuyanMana" class="liuyanAction" method="liuyanMana">
+             <result name="success">/admin/liuyan/liuyanMana.jsp</result>
+        </action>
+        <action name="liuyanAdd" class="liuyanAction" method="liuyanAdd">
+        </action>
+        <action name="liuyanDel" class="liuyanAction" method="liuyanDel">
+        </action>
+        <action name="liuyanAll" class="liuyanAction" method="liuyanAll">
+             <result name="success">/qiantai/liuyan/liuyanAll.jsp</result>
+        </action>
+        
+        <action name="liuyanAddReply" class="liuyanAction" method="liuyanAddReply">
+        	
+        </action>
+        
+        <action name="commentMana" class="commentAction" method="commentMana">
+             <result name="success">/admin/comment/commentMana.jsp</result>
+        </action>
+        <action name="commentAdd" class="commentAction" method="commentAdd">
+        </action>
+        <action name="commentDel" class="commentAction" method="commentDel">
+        </action>
+         <action name="commentReply" class="commentAction" method="commentReply">
+        </action>
+     
+        
+        
+        
+         <action name="gonggaoAdd" class="gonggaoAction" method="gonggaoAdd">
+        </action>
+        <action name="gonggaoDel" class="gonggaoAction" method="gonggaoDel">
+        </action>
+        <action name="gonggaoMana" class="gonggaoAction" method="gonggaoMana">
+            <result>/admin/gonggao/gonggaoMana.jsp</result>
+        </action>
+        <action name="gonggaoDetail" class="gonggaoAction" method="gonggaoDetail">
+            <result>/admin/gonggao/gonggaoDetail.jsp</result>
+        </action>
+        <action name="gonggaoQian5" class="gonggaoAction" method="gonggaoQian5">
+            <result>/qiantai/gonggao/gonggaoQian5.jsp</result>
+        </action>
+        <action name="gonggaoDetailQian" class="gonggaoAction" method="gonggaoDetailQian">
+            <result>qiantai/gonggao/gonggaoDetailQian.jsp</result>
+        </action>
+        
+        
+        <action name="xiaoshouMine" class="xiaoshouAction" method="xiaoshouMine">
+            <result name="success">/admin/xiaoshou/xiaoshouMine.jsp</result>
+        </action>
+        
+        
+    <action name="orderDelByAd" class="xiaoshouAction" method="orderDelByAd">
+        </action>
+        
+        
+        
+        <action name="orderdata" class="xiaoshouAction" method="orderdata">
+            
+        </action>
+      
+        <action name="shouli" class="xiaoshouAction" method="shouli">
+        </action>
+    </package>
+</struts>
